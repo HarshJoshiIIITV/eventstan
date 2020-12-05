@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/eventstan.git/static/css/main.332ba34e.chunk.css",
-    "main.js": "/eventstan.git/static/js/main.81fa615b.chunk.js",
-    "main.js.map": "/eventstan.git/static/js/main.81fa615b.chunk.js.map",
-    "runtime-main.js": "/eventstan.git/static/js/runtime-main.88840080.js",
-    "runtime-main.js.map": "/eventstan.git/static/js/runtime-main.88840080.js.map",
-    "static/css/2.20aa2d7b.chunk.css": "/eventstan.git/static/css/2.20aa2d7b.chunk.css",
-    "static/js/2.11fc09b1.chunk.js": "/eventstan.git/static/js/2.11fc09b1.chunk.js",
-    "static/js/2.11fc09b1.chunk.js.map": "/eventstan.git/static/js/2.11fc09b1.chunk.js.map",
-    "static/js/3.971828f9.chunk.js": "/eventstan.git/static/js/3.971828f9.chunk.js",
-    "static/js/3.971828f9.chunk.js.map": "/eventstan.git/static/js/3.971828f9.chunk.js.map",
-    "index.html": "/eventstan.git/index.html",
-    "static/css/2.20aa2d7b.chunk.css.map": "/eventstan.git/static/css/2.20aa2d7b.chunk.css.map",
-    "static/css/main.332ba34e.chunk.css.map": "/eventstan.git/static/css/main.332ba34e.chunk.css.map",
-    "static/js/2.11fc09b1.chunk.js.LICENSE.txt": "/eventstan.git/static/js/2.11fc09b1.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/eventstan.git/static/media/banner_1.d371a8f8.png",
-    "static/media/room-5.35e40315.jpg": "/eventstan.git/static/media/room-5.35e40315.jpg"
+    "main.css": "/eventstan/static/css/main.3f548422.chunk.css",
+    "main.js": "/eventstan/static/js/main.81fa615b.chunk.js",
+    "main.js.map": "/eventstan/static/js/main.81fa615b.chunk.js.map",
+    "runtime-main.js": "/eventstan/static/js/runtime-main.d09750ef.js",
+    "runtime-main.js.map": "/eventstan/static/js/runtime-main.d09750ef.js.map",
+    "static/css/2.20aa2d7b.chunk.css": "/eventstan/static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.11fc09b1.chunk.js": "/eventstan/static/js/2.11fc09b1.chunk.js",
+    "static/js/2.11fc09b1.chunk.js.map": "/eventstan/static/js/2.11fc09b1.chunk.js.map",
+    "static/js/3.971828f9.chunk.js": "/eventstan/static/js/3.971828f9.chunk.js",
+    "static/js/3.971828f9.chunk.js.map": "/eventstan/static/js/3.971828f9.chunk.js.map",
+    "index.html": "/eventstan/index.html",
+    "static/css/2.20aa2d7b.chunk.css.map": "/eventstan/static/css/2.20aa2d7b.chunk.css.map",
+    "static/css/main.3f548422.chunk.css.map": "/eventstan/static/css/main.3f548422.chunk.css.map",
+    "static/js/2.11fc09b1.chunk.js.LICENSE.txt": "/eventstan/static/js/2.11fc09b1.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/eventstan/static/media/banner_1.d371a8f8.png",
+    "static/media/room-5.35e40315.jpg": "/eventstan/static/media/room-5.35e40315.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.88840080.js",
+    "static/js/runtime-main.d09750ef.js",
     "static/css/2.20aa2d7b.chunk.css",
     "static/js/2.11fc09b1.chunk.js",
-    "static/css/main.332ba34e.chunk.css",
+    "static/css/main.3f548422.chunk.css",
     "static/js/main.81fa615b.chunk.js"
   ]
 }
