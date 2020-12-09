@@ -30,7 +30,7 @@ class Homeext extends Component {
             <div className="homeext">
                 <div className="upper_part">
                     <div className="mob" style={{ display: 'flex', justifyContent: 'space-between', paddingLeft: '15px', paddingRight: '15px', maxWidth: "1140px", margin: '5px auto' }}>
-                        <a href="home.html" class="navbar-brand">Event<span className="colored">stan</span></a>
+                        <a href="/eventstan" class="navbar-brand">Event<span className="colored">stan</span></a>
                     </div>
                     <div className="banner-content">
                         <h2 className="banner-title">Want to join EVENTSTAN as a professional?</h2>
@@ -295,7 +295,7 @@ class Homeext extends Component {
                                             <div class="form-group">
                                                 <label >Specilization</label>
                                                 <select id="cars" name="cars" class="form-control" placeholder="Select">
-                                                <option value="select">Select</option>
+                                                    <option value="select">Select</option>
                                                     <option value="anchors">Anchors/Mcs</option>
                                                     <option value="celebrity">Celebrity</option>
                                                     <option value="dj">DJ</option>
