@@ -207,3 +207,10 @@ a.navbar-brand {
 		height: 300px !important;
 	}
 }
+
+Button,
+a {
+	border: none !important;
+	outline: none !important;
+	text-decoration: none !important;
+}

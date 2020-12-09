@@ -38,7 +38,7 @@ class Home extends Component {
         if (curr_state.phone_number == null || curr_state.email == null || curr_state.name == null || curr_state.message == null) {
             document.getElementById("message_contact2").innerHTML = ""
             document.getElementById("message_contact").innerHTML = ""
-            document.getElementById("message_contact2").innerHTML = "Please fill valid details!"
+            document.getElementById("message_contact2").innerHTML = "Please fill all details!"
             return;
         }
         axios.post('http://eventstan.com:3001/user/contactUs',
@@ -47,12 +47,12 @@ class Home extends Component {
             .then((resp) => {
                 document.getElementById("message_contact2").innerHTML = ""
                 document.getElementById("message_contact").innerHTML = ""
-                document.getElementById("message_contact").innerHTML = "Thanks for contacting!"
+                document.getElementById("message_contact").innerHTML = "Thanks for contacting, Our Member reach out to you soon"
             })
             .catch((err) => {
                 document.getElementById("message_contact2").innerHTML = ""
                 document.getElementById("message_contact").innerHTML = ""
-                document.getElementById("message_contact2").innerHTML = "Please fill valid details!"
+                document.getElementById("message_contact2").innerHTML = "Please fill all details!"
             });
     }
     render() {
