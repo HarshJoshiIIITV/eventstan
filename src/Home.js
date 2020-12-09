@@ -32,7 +32,8 @@ class Home extends Component {
         });
     }
 
-    onsubmit = () => {
+    onsubmit = (e) => {
+        e.preventDefault();
         const curr_state = { phone_number: this.state.phone_number, name: this.state.name, email: this.state.email, message: this.state.message, userType: "USER" }
         console.log(curr_state + "*******");
         if (curr_state.phone_number == null || curr_state.email == null || curr_state.name == null || curr_state.message == null) {
@@ -195,7 +196,7 @@ class Home extends Component {
                     <Container className="contact_container">
                         <h2 style={{ color: 'black', textAlign: 'center' }} className="title">Contact us</h2>
                         <br />
-                        <form>
+                        <form onSubmit={this.onsubmit}>
                             <div class="form-group">
                                 <label>Full name</label>
                                 <input required onChange={this.onchange} type="text" class="form-control" name="name" placeholder="Enter your name" />
@@ -220,8 +221,7 @@ class Home extends Component {
                             </div>
                             <h6 id="message_contact" style={{ color: 'green' }}></h6>
                             <h6 id="message_contact2" style={{ color: 'red' }}></h6>
-                            <Button onClick={this.onsubmit} className="btn">Submit</Button>
-
+                            <Button type="submit" className="btn">Submit</Button>
                         </form>
                     </Container>
                 </div>

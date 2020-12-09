@@ -7,14 +7,129 @@ import client4 from './assets/Homeext/client4.png'
 import client5 from './assets/Homeext/client5.png'
 import './Homeext.css';
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Homeext extends Component {
     constructor() {
         super();
         this.state = {
-            individual: true
+            individual: true,
+            type: "",
+            email: "",
+            phone_number: "",
+            firstName: "",
+            lastName: "",
+            visaType: "",
+            specilization: "",
+            introduceYourself: "",
+            emirates: "",
+            Bemail: "",
+            Bname: "",
+            BcontactNumber: "",
+            contactPerson: "",
+            Ospecilization: "",
+            OintroduceYourself: "",
+            city: ""
         }
     }
+
+    onchange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+        console.log(this.state)
+    }
+
+    get_state = (x) => {
+        var curr_state;
+        if (x == "1") {
+            curr_state = {
+                type: 1,
+                email: this.state.email,
+                phone_number: this.state.phone_number,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                visaType: this.state.visaType,
+                specilization: this.state.specilization,
+                introduceYourself: this.state.introduceYourself,
+                emirates: this.state.emirates,
+            }
+        }
+        else {
+            curr_state = {
+                type: 2,
+                Bemail: this.state.Bemail,
+                Bname: this.state.Bname,
+                BcontactNumber: this.state.BcontactNumber,
+                contactPerson: this.state.contactPerson,
+                Ospecilization: this.state.Ospecilization,
+                OintroduceYourself: this.state.OintroduceYourself,
+                city: this.state.city
+            }
+        }
+        return curr_state;
+    }
+
+    valid = (curr_state) => {
+        if (curr_state.type == 1) {
+            const {
+                email,
+                phone_number,
+                firstName,
+                lastName,
+                visaType,
+                specilization,
+                introduceYourself,
+                emirates } = curr_state;
+            if (email.length == 0 || phone_number.length == 0 || firstName.length == 0 || lastName.length == 0 || emirates.length == 0 || visaType.length == 0 || specilization.length == 0 || introduceYourself.length == 0 || introduceYourself.length == 0) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        else {
+            const {
+                Bemail,
+                Bname,
+                BcontactNumber,
+                contactPerson,
+                Ospecilization,
+                OintroduceYourself,
+                city
+            } = curr_state
+            if (Bemail.length == 0 || Bname.length == 0 || BcontactNumber.length == 0 || contactPerson.length == 0 || Ospecilization.length == 0
+                || OintroduceYourself.length == 0 || city.length == 0) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    }
+
+    onsubmit1 = (event, x) => {
+        event.preventDefault();
+        const curr_state = this.get_state(x)
+        console.log(curr_state + "*******");
+        console.log(x + "*******");
+        if (!this.valid(curr_state)) {
+            alert("Please fill complete details");
+            return;
+        }
+        axios.post('http://eventstan.com:3001/user/professionalContactUs',
+            curr_state
+        )
+            .then((resp) => {
+                console.log("Response**");
+                alert("Submitted successfully");
+            })
+            .catch((err) => {
+                console.log(err);
+                alert("Please fill complete details");
+            });
+    }
+
     toggle_form = () => {
         this.setState({
             individual: false
@@ -151,18 +266,18 @@ class Homeext extends Component {
                         <br />
                         {
                             this.state.individual ? (
-                                <form>
+                                <form onSubmit={(e) => this.onsubmit1(e, "1")}>
                                     <div class="row">
                                         <div class="col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <label>First name</label>
-                                                <input type="number" class="form-control" placeholder="Enter first name " />
+                                                <input required onChange={this.onchange} name="firstName" type="text" class="form-control" placeholder="Enter first name " />
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <label >Last name</label>
-                                                <input type="email" class="form-control" placeholder="Enter last name " />
+                                                <input required name="lastName" onChange={this.onchange} type="text" class="form-control" placeholder="Enter last name " />
                                             </div>
                                         </div>
                                     </div>
@@ -170,13 +285,13 @@ class Homeext extends Component {
                                         <div class="col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <label >Email ID</label>
-                                                <input type="email" class="form-control" placeholder="Enter Email ID " />
+                                                <input required name="email" onChange={this.onchange} type="email" class="form-control" placeholder="Enter Email ID " />
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <label>Contact number</label>
-                                                <input type="number" class="form-control" placeholder="Enter Contact number " />
+                                                <input required onChange={this.onchange} type="number" name="phone_number" class="form-control" placeholder="Enter Contact number " />
                                             </div>
                                         </div>
                                     </div>
@@ -184,7 +299,7 @@ class Homeext extends Component {
                                         <div class="col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <label >Emirates</label>
-                                                <select id="emirates" name="places" class="form-control" placeholder="Select">
+                                                <select required onChange={this.onchange} id="emirates" name="emirates" class="form-control" placeholder="Select">
                                                     <option value="select">Select</option>
                                                     <option value="abu dhabi">Abu dhabi</option>
                                                     <option value="dubai">Dubai</option>
@@ -199,7 +314,7 @@ class Homeext extends Component {
                                         <div class="col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <label>Visa type</label>
-                                                <select id="visa" name="places" class="form-control" placeholder="Select">
+                                                <select required onChange={this.onchange} id="visa" name="visaType" class="form-control" placeholder="Select">
                                                     <option value="select">Select</option>
                                                     <option value="residence">Residence</option>
                                                     <option value="employment">Emploment</option>
@@ -213,7 +328,7 @@ class Homeext extends Component {
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <label >Specilization</label>
-                                                <select id="roles" name="places" class="form-control" placeholder="Select">
+                                                <select required onChange={this.onchange} id="roles" name="specilization" class="form-control" placeholder="Select">
                                                     <option value="select">Select</option>
                                                     <option value="anchors">Anchors/Mcs</option>
                                                     <option value="celebrity">Celebrity</option>
@@ -239,24 +354,24 @@ class Homeext extends Component {
                                     </div>
                                     <div class="form-group">
                                         <label >Briefly introduce yourself: ( include links /references)</label>
-                                        <textarea class="form-control" rows="6" placeholder="Write here"></textarea>
+                                        <textarea required type="text" onChange={this.onchange} name="introduceYourself" class="form-control" rows="6" placeholder="Write here"></textarea>
                                     </div>
-                                    <Button className="btn">Submit</Button>
+                                    <Button type="submit" className="btn">Submit</Button>
                                 </form>
 
                             ) :
-                                <form>
+                                <form onSubmit={(e) => this.onsubmit1(e, "2")} >
                                     <div class="row">
                                         <div class="col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <label>Business name</label>
-                                                <input type="text" class="form-control" placeholder="Enter business name " />
+                                                <input required onChange={this.onchange} name="Bname" type="text" class="form-control" placeholder="Enter business name " />
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <label >Business Email</label>
-                                                <input type="email" class="form-control" placeholder="Enter business email " />
+                                                <input required name="Bemail" onChange={this.onchange} type="email" class="form-control" placeholder="Enter business email " />
                                             </div>
                                         </div>
                                     </div>
@@ -264,13 +379,13 @@ class Homeext extends Component {
                                         <div class="col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <label >Contact person</label>
-                                                <input type="text" class="form-control" placeholder="Enter Email ID " />
+                                                <input required name="contactPerson" onChange={this.onchange} type="text" class="form-control" placeholder="Enter person name " />
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <label>Business contact number</label>
-                                                <input type="number" class="form-control" placeholder="Enter Contact number " />
+                                                <input required name="BcontactNumber" onChange={this.onchange} type="number" class="form-control" placeholder="Enter Contact number " />
                                             </div>
                                         </div>
                                     </div>
@@ -279,7 +394,7 @@ class Homeext extends Component {
                                         <div class="col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <label >City</label>
-                                                <select id="cars" name="cars" class="form-control" placeholder="Select">
+                                                <select required onChange={this.onchange} id="cars" name="city" class="form-control" placeholder="Select">
                                                     <option value="select">Select</option>
                                                     <option value="abu dhabi">Abu dhabi</option>
                                                     <option value="dubai">Dubai</option>
@@ -294,7 +409,7 @@ class Homeext extends Component {
                                         <div class="col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <label >Specilization</label>
-                                                <select id="cars" name="cars" class="form-control" placeholder="Select">
+                                                <select required onChange={this.onchange} id="cars" name="Ospecilization" class="form-control" placeholder="Select">
                                                     <option value="select">Select</option>
                                                     <option value="anchors">Anchors/Mcs</option>
                                                     <option value="celebrity">Celebrity</option>
@@ -320,9 +435,9 @@ class Homeext extends Component {
                                     </div>
                                     <div class="form-group">
                                         <label >Briefly introduce yourself: ( include links /references)</label>
-                                        <textarea class="form-control" rows="6" placeholder="Write here"></textarea>
+                                        <textarea required type="text" onChange={this.onchange} name="OintroduceYourself" class="form-control" rows="6" placeholder="Write here"></textarea>
                                     </div>
-                                    <Button className="btn">Submit</Button>
+                                    <Button type="submit" className="btn">Submit</Button>
                                 </form>
 
                         }
